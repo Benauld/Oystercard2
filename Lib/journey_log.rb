@@ -1,0 +1,29 @@
+require_relative 'journey'
+
+class JourneyLog
+  attr_reader :journey_log
+
+  def initialize
+    @journey_log = []
+  end
+
+  def in_journey?
+    !!@entry_station
+  end
+
+  def start_journey(entry_station)
+    @journey_log << Journey.new(entry_station)
+  end
+
+  def end_journey(exit_station)
+    if @journey_log.last.complete?
+      start_journey(nil)
+    end
+    @journey_log.last.end(exit_station)
+  end
+
+  def calc_fare_on_last
+    @journey_log.last.calc_fare
+  end
+
+end
