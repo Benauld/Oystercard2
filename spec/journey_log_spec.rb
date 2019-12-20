@@ -11,6 +11,14 @@ describe JourneyLog do
     end
   end
 
+  # describe '#in_journey?' do
+  #   it 'return true if entry_station' do
+  #     subject = JourneyLog.new(Journey)
+  #     subject.start_journey(entry_station)
+  #     expect(subject.in_journey?).to be_truthy
+  #   end
+  # end
+
   describe '#start_journey' do
     it 'creates an instance of new journey' do
       subject = JourneyLog.new(Journey)

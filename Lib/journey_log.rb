@@ -9,7 +9,14 @@ class JourneyLog
   end
 
   def in_journey?
-    !!@entry_station
+
+    if @journey_log == []
+      false
+    else
+      p "journey lon in in journey"
+      p @journey_log
+      !@journey_log.last.complete?
+    end
   end
 
   def start_journey(entry_station)

@@ -1,4 +1,6 @@
 require_relative 'station'
+require_relative 'journey_log'
+require_relative 'journey'
 
 class Oystercard
 
@@ -21,11 +23,11 @@ end
 
 
   def touch_in(entry_station)
+    raise "insufficient funds" if insufficient_touch_in?
     if @journey_log.in_journey?
+      p "are we coming in here"
      deduct(@journey_log.calc_fare_on_last)
     end
-    raise "insufficient funds" if insufficient_touch_in?
-
     @journey_log.start_journey(entry_station)
   end
 
