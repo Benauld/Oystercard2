@@ -22,17 +22,14 @@ end
 
   def touch_in(entry_station)
     if @journey_log.in_journey?
-      p "am I going in here?"
      deduct(@journey_log.calc_fare_on_last)
     end
     raise "insufficient funds" if insufficient_touch_in?
-    p "start journey entry station"
-    p entry_station
+
     @journey_log.start_journey(entry_station)
   end
 
   def touch_out(exit_station)
-    p "we started the touch out process"
     @journey_log.end_journey(exit_station)
     deduct(@journey_log.calc_fare_on_last)
   end

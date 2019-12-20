@@ -19,10 +19,6 @@ class Journey
   end
 
   def complete?
-    p "entry station"
-    p @entry_station
-    p "exit station"
-    p @exit_station
     !!@entry_station && !!@exit_station
   end
 

@@ -25,9 +25,13 @@ describe Oystercard do
 
   it "touch out reduces balance by 2 (minimum)" do
     subject.top_up(11)
-    p "reduce balance by 2"
     subject.touch_in(entry_station)
     expect { subject.touch_out(exit_station)} .to change {subject.balance }.by(-2)
+  end
+
+  it "touch out reduces balance by 6 (penalty)" do
+    subject.top_up(11)
+    expect { subject.touch_out(exit_station)} .to change {subject.balance }.by(-6)
   end
 
   it "records the entry station on touch in" do
